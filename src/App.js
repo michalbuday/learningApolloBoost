@@ -16,6 +16,7 @@ const GET_ARTICLES = gql`
 `
 const ListArticles = (props) => (props.articles.map((article, index) =>
   <Link
+    key={index + "link"}
     to={{
       pathname: `/${article.id}`
     }}
