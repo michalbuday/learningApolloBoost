@@ -18,7 +18,7 @@ const ListArticles = (props) => (props.articles.map((article, index) =>
   <Link
     key={index + "link"}
     to={{
-      pathname: `/${article.id}`
+      pathname: `/detail/${article.id}`
     }}
     style={{ textDecoration: "none" }}
   >

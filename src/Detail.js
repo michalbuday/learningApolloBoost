@@ -26,7 +26,7 @@ class Detail extends Component {
           {({ loading, error, data }) => {
             if (loading) return <div>Loading...</div>;
             if (error) return <div>Error :(</div>;
-
+            if (!data.article) return <div>No article with id:{id}</div>;
             return <div>
               <ul>
                 <li>{data.article.title}</li>

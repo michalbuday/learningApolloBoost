@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Detail from './Detail';
+import BadRoute from './BadRoute';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -16,7 +17,8 @@ const ApolloApp = () => (
     <Router>
       <Switch>
         <Route path="/" exact component={App} />
-        <Route path="/:id" component={Detail} />
+        <Route path="/detail/:id" component={Detail} />
+        <Route component={BadRoute} />
       </Switch>
     </Router>
   </ApolloProvider>
