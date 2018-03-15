@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import styled from 'styled-components';
 
 
 class Detail extends Component {
@@ -17,9 +18,16 @@ class Detail extends Component {
         title,
         text,
         author,
-        views
+        views,
       }}
     `
+    const CustomList = styled.ul`
+      list-style-type: none;
+    `;
+    const StyledItem = styled.li`
+      color: blue;
+      margin: 20px;
+    `;
     return (
       <div className="App">
         <header className="App-header">
@@ -32,12 +40,12 @@ class Detail extends Component {
             if (error) return <div>Error :(</div>;
             if (!data.article) return <div>No article with id:{id}</div>;
             return <div>
-              <ul>
-                <li>{data.article.title}</li>
-                <li>{data.article.text}</li>
-                <li>{data.article.author}</li>
-                <li>{data.article.views}</li>
-              </ul>
+              <CustomList>
+                <StyledItem>{data.article.title}</StyledItem>
+                <StyledItem>{data.article.text}</StyledItem>
+                <StyledItem>{data.article.author}</StyledItem>
+                <StyledItem>{data.article.views}</StyledItem>
+              </CustomList>
             </div>
           }}
         </Query>

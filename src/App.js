@@ -4,8 +4,12 @@ import './App.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 import AddView from './addView';
 
+const StyledLink = styled(Link) `
+  color: palevioletred;
+`;
 
 const GET_ARTICLES = gql`
   query {articles{
@@ -17,7 +21,7 @@ const GET_ARTICLES = gql`
 `
 const ListArticles = (props) => (props.articles.map((article, index) =>
   <AddView key={index + "addView"} id={article.id}>
-    <Link
+    <StyledLink
       key={index + "link"}
       to={{
         pathname: `/detail/${article.id}`
@@ -27,7 +31,7 @@ const ListArticles = (props) => (props.articles.map((article, index) =>
       <li key={index} >
         {article.title}
       </li>
-    </Link>
+    </StyledLink>
   </AddView>)
 );
 
