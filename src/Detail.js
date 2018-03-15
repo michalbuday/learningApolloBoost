@@ -45,7 +45,7 @@ class Detail extends Component {
                 <StyledItem>{data.article.title}</StyledItem>
                 <StyledItem>{data.article.text}</StyledItem>
                 <StyledItem>{data.article.author}</StyledItem>
-                <StyledItem>{data.article.views}</StyledItem>
+                <StyledItem>Article Viewed: {data.article.views} times</StyledItem>
               </CustomList>
             </div>
           }}
