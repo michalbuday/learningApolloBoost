@@ -1,41 +1,31 @@
 import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import styled from 'styled-components';
+import { StyledItem, CustomList } from './styled';
 
 import logo from './logo.svg';
 import './App.css';
 
-
-class Detail extends Component {
-  componentDidMount() {
-    this.forceUpdate();
-  }
-  render() {
-    const { id } = this.props.match.params;
-
-    const GET_ARTICLE = gql`
-      query {article(id: ${id}){
+export const GET_ARTICLE = gql`
+      query Article($id: Int){article(id: $id){
         title,
         text,
         author,
         views,
       }}
-    `
-    const CustomList = styled.ul`
-      list-style-type: none;
     `;
-    const StyledItem = styled.li`
-      color: blue;
-      margin: 20px;
-    `;
+
+class Detail extends Component {
+  render() {
+    const { id } = this.props.match.params;
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Detail of Article in React</h1>
         </header>
-        <Query query={GET_ARTICLE}>
+        <Query query={GET_ARTICLE} variables={{ id: id }}>
           {({ loading, error, data }) => {
             if (loading) return <div>Loading...</div>;
             if (error) return <div>Error :(</div>;
@@ -50,7 +40,7 @@ class Detail extends Component {
             </div>
           }}
         </Query>
-      </div>
+      </div >
     );
   }
 }
