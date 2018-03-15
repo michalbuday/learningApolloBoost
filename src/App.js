@@ -4,6 +4,7 @@ import './App.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Link } from "react-router-dom";
+import AddView from './addView';
 
 
 const GET_ARTICLES = gql`
@@ -15,16 +16,19 @@ const GET_ARTICLES = gql`
 }}
 `
 const ListArticles = (props) => (props.articles.map((article, index) =>
-  <Link
-    key={index + "link"}
-    to={{
-      pathname: `/detail/${article.id}`
-    }}
-    style={{ textDecoration: "none" }}
-  >
-    <li key={index} >
-      {article.title}
-    </li></Link>)
+  <AddView key={index + "addView"} id={article.id}>
+    <Link
+      key={index + "link"}
+      to={{
+        pathname: `/detail/${article.id}`
+      }}
+      style={{ textDecoration: "none" }}
+    >
+      <li key={index} >
+        {article.title}
+      </li>
+    </Link>
+  </AddView>)
 );
 
 class App extends Component {

@@ -6,6 +6,9 @@ import { Query } from 'react-apollo';
 
 
 class Detail extends Component {
+  componentDidMount() {
+    this.forceUpdate();
+  }
   render() {
     const { id } = this.props.match.params;
 
@@ -13,7 +16,8 @@ class Detail extends Component {
       query {article(id: ${id}){
         title,
         text,
-        author
+        author,
+        views
       }}
     `
     return (
@@ -32,6 +36,7 @@ class Detail extends Component {
                 <li>{data.article.title}</li>
                 <li>{data.article.text}</li>
                 <li>{data.article.author}</li>
+                <li>{data.article.views}</li>
               </ul>
             </div>
           }}
