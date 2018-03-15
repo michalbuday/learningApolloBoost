@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+
 import AddView from './addView';
+
+import logo from './logo.svg';
+import './App.css';
 
 const StyledLink = styled(Link) `
   color: palevioletred;
@@ -16,7 +18,7 @@ const GET_ARTICLES = gql`
   id,
   title,
   text,
-  author
+  author,
 }}
 `
 const ListArticles = (props) => (props.articles.map((article, index) =>
