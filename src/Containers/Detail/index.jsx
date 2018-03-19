@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import { StyledItem, CustomList } from './styled';
 
-import logo from './logo.svg';
+import * as Styled from '../../styledComponents';
+
+import logo from '../../logo.svg';
 import './App.css';
 
 export const GET_ARTICLE = gql`
@@ -17,6 +18,7 @@ export const GET_ARTICLE = gql`
 
 class Detail extends Component {
   render() {
+
     const { id } = this.props.match.params;
 
     return (
@@ -30,14 +32,15 @@ class Detail extends Component {
             if (loading) return <div>Loading...</div>;
             if (error) return <div>Error :(</div>;
             if (!data.article) return <div>No article with id:{id}</div>;
-            return <div>
-              <CustomList>
-                <StyledItem>{data.article.title}</StyledItem>
-                <StyledItem>{data.article.text}</StyledItem>
-                <StyledItem>{data.article.author}</StyledItem>
-                <StyledItem>Article Viewed: {data.article.views} times</StyledItem>
-              </CustomList>
-            </div>
+            return (
+              <div>
+                <Styled.CustomList>
+                  <Styled.StyledItem>{data.article.title}</Styled.StyledItem>
+                  <Styled.StyledItem>{data.article.text}</Styled.StyledItem>
+                  <Styled.StyledItem>{data.article.author}</Styled.StyledItem>
+                  <Styled.StyledItem>Article Viewed: {data.article.views} times</Styled.StyledItem>
+                </Styled.CustomList>
+              </div>)
           }}
         </Query>
       </div >

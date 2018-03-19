@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import { GET_ARTICLE } from './Detail';
+import { GET_ARTICLE } from '../Containers/Detail';
 
 class AddViewToArticle extends Component {
   onClick = () => {
-    console.log(this.props.views);
     this.props.mutate({
       variables: { id: this.props.id, views: this.props.views },
-      refetchQueries: [{ query: GET_ARTICLE, variables: { id: this.props.id } }],
     })
       .then(({ data }) => {
 
@@ -32,6 +30,10 @@ const addView = gql`
   }
 `;
 
-const AddViewToArticleWithData = graphql(addView)(AddViewToArticle);
+const AddViewToArticleWithData = graphql(addView, {
+  options: (props) => ({
+    refetchQueries: [{ query: GET_ARTICLE, variables: { id: props.id } }],
+  }),
+})(AddViewToArticle);
 
 export default AddViewToArticleWithData;

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 
-import AddView from './addView';
+import AddView from '../../Components/addView.jsx';
 
-import { StyledLink } from './styled';
+import * as Styled from '../../styledComponents.js';
 
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
 
 const GET_ARTICLES = gql`
@@ -18,7 +18,7 @@ const GET_ARTICLES = gql`
 `
 const ListArticles = (props) => (props.articles.map((article, index) =>
   <AddView key={index + "addView"} id={article.id} views={article.views}>
-    <StyledLink
+    <Styled.StyledLink
       key={index + "link"}
       to={{
         pathname: `/detail/${article.id}`
@@ -28,7 +28,7 @@ const ListArticles = (props) => (props.articles.map((article, index) =>
       <li key={index} >
         {article.title}
       </li>
-    </StyledLink>
+    </Styled.StyledLink>
   </AddView>)
 );
 
