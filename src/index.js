@@ -4,9 +4,9 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import App from './App';
-import Detail from './Detail';
-import BadRoute from './BadRoute';
+import App from './Containers/App';
+import Detail from './Containers/Detail';
+import BadRoute from './Containers/BadRoute';
 
 import './index.css';
 
